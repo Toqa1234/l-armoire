@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginandregister.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <title>Login and Register</title>
+</head>
+<body>
+     <nav>
+        <h2>l'armoire</h2>
+        <div class="nav-links">
+        <ul class="menu">
+            <li>  <a href="index.html" class="active "> Home</a> </li>
+            <li>
+                <a href="#" class="active "> Clothing</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="man.html"> Men Clothes</a> </li>
+                        <li> <a href="Women.html"> Women Clothes</a> </li>
+                        <li><a href="Children.html"> Children Clothes</a> </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="yourcart.html"> Your Cart</a> </li>
+            <li><a href="About-Us.html"> about us </a> </li>
+            <li>
+                <a href="#" class="active ">Account</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="loginandregister.html"> Log in </a> </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="index.html"> Log Out </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        </div>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="bckgrnd">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="switchingBtn" onclick="login()">Login</button>
+                    <button type="button" class="switchingBtn" onclick="register()">Register</button>
+                </div>
+                <!-- Login form  -->
+                <form id="login" class="input-group"action="_blank" method="POST">
+                    <br><input class="input-field" id="user" type="text" name="username" placeholder="Username" required ><br><br>
+                    <input class="input-field" id="pass" type="password" name="pass" placeholder="Password" required><br><br>
+                    <input type="checkbox" class="checkbx"> <span>Remember me</span>
+                    <button type="submit" class="subbtn" onclick="login1(); check();">Login</button> <br> <!--check-->
+                    <p id="result">Welcome, login...</p>
+                </form>
+                <!-- Register form  -->
+                <form id="register" class="input-group" method="POST">
+                    <br><input class="input-field" type="text" name="username" placeholder="Username" required id="username" ><br><br>
+                    <br><input class="input-field" type="email" name="email" placeholder="Email" required id="email"><br><br>
+                    <input class="input-field" type="password" name="pass" placeholder="Password" required id="password"><br><br>
+                    <input type="checkbox" class="checkbx" required> <span>I agree to the terms and conditions</span>
+                    <button type="submit" class="subbtn" onclick="register1()">Register</button> <br>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        let x = document.getElementById("login")
+        let y = document.getElementById("register")
+        let z = document.getElementById("btn")
+
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+        function register1(){
+            event.preventDefault();
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let pass = document.getElementById('password').value;
+
+            let user = {
+                email: email,
+                username: username,
+                password: pass,
+            };
+            let json = JSON.stringify(user);
+            localStorage.setItem(username, json);
+            if(username.value == "" && pass.value == ""){
+                console.log(alert("Empty Fields!"));
+            }
+            else 
+                window.location.href="index.html";
+        }
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0";
+        }
+        function login1 (){
+            event.preventDefault();
+            var username = document.getElementById('user').value;
+            var pass = document.getElementById('pass').value;
+
+            var user = localStorage.getItem(username);
+            var date = JSON.parse(user);
+            console.log(localStorage.getItem(username));
+            if (user == null) {
+                alert('wrong username');
+            }
+            else if (username == date.username && pass == date.password){
+                
+                window.location.href="index.html";
+            }
+            else {
+                alert('wrong password');
+            }
+        }
+        
+          //menu-button
+        var menuIcon = document.querySelector(".menu-icon");
+        var navLinks = document.querySelector(".nav-links");
+
+        menuIcon.addEventListener('click', function () {
+            navLinks.classList.toggle('d-flex');
+        })
+        
+    </script>
+</body>
+</html>

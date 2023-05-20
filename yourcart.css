@@ -1,0 +1,140 @@
+:root{
+    --textalign:center;
+    --marginleft:10px;
+}
+body{
+    display:flex ;
+    background-color:#bcb8b1;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    line-height: 20px;
+
+}
+.container{
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    float: left;
+}
+.shoppingcart{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-template-rows: 120px 50vh 100px;
+    grid-template-areas:"yc bl bl ni""product quantity price total""f fs fs fs";
+   row-gap: 5px;
+    
+}
+h2{
+    padding-top: 50px;
+    margin-left: 30px;
+    margin-bottom: 0px;
+}
+span{
+    background-color: black;
+    width:124vh;
+    height:2px;
+    position: absolute;
+    top: 115px;
+    
+}
+.items{
+    grid-area: ni;
+padding-right: 50px;
+}
+p{
+    color: #C3C3C3;
+    margin-bottom: 200px;
+}
+.pd{
+    grid-area: product;
+    width: 40vh;
+    text-align: var(--textalign);
+}
+.q{
+    grid-area: quantity;
+    width: 30vh;
+    text-align: center;
+}
+.p{
+grid-area: price;
+width: 15vh;
+text-align: var(--textalign);
+}
+.t{
+    grid-area: total;
+    text-align: var(--textalign);
+}
+a{
+    grid-area: f;
+margin-left: 30px;
+text-decoration: none;
+color: blue;
+}
+.ordersummary{
+    background-color:#F6F6F6;
+    border-radius: 0 5px 5px 0;
+    width: 50vh;
+}
+.ITS{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: repeat(2,auto);
+grid-template-areas: "its ct";
+height: 75px;
+}
+.its{
+grid-area: its;
+color: black;
+margin-left: var(--marginleft);
+}
+.ct{
+    grid-area: ct;
+    color: black;
+    direction: rtl;
+    padding-right: 15px;
+}
+label{
+    margin-left: var(--marginleft);
+}
+input{
+    padding: 15px;
+    width: 230px;
+    border-radius: 5px;
+    margin-left: var(--marginleft);
+}
+button{
+    text-align: center;
+    background-color:#F97574;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 110px;
+    margin-left: 50px;
+}
+.tot{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: repeat(2,auto);
+grid-template-areas: "tot do";
+height: 75px;
+}
+p.tot{
+ grid-area:tot ;
+ color: black;
+}
+p.do{
+    grid-area: do;
+    color: black;
+    direction: rtl;
+    margin-right: 10px;
+}
+#ch{
+    background-color: #5C51DB;
+    color: white;
+border-radius: 5px;
+width: 300px;
+}
+button:hover{
+    cursor: pointer;
+}
